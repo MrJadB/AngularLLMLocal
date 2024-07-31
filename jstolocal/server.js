@@ -11,7 +11,9 @@ const port = 3000;
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:4200",
+    //origin: "http://localhost:4200",
+    //edit address
+    origin: "http://54.84.200.3:4200",
     methods: ["GET", "POST"],
     credentials: true
   }
@@ -19,7 +21,9 @@ const io = socketIo(server, {
 
 app.use(bodyParser.json());
 app.use(cors({
-  origin: "http://localhost:4200",
+  //origin: "http://localhost:4200",
+  //edit address
+  origin: "http://54.84.200.3:4200",
   methods: ["GET", "POST"],
   credentials: true
 }));
@@ -66,7 +70,7 @@ app.post('/api/generate-content', (req, res) => {
   });
 });
 //port listen
-server.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+server.listen(port, '0.0.0.0', () => {
+  console.log(`Server is running on http://0.0.0.0:${port}`);
 });
 

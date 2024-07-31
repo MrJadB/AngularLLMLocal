@@ -11,7 +11,9 @@ export class LocalModelService {
   private socket: Socket;
 
   constructor(private http: HttpClient) {
-    this.socket = io('http://localhost:3000', {
+   // this.socket = io('http://localhost:3000', {
+   //edit address
+    this.socket = io('http://54.84.200.3:3000', {
       withCredentials: true,
     });
     // ตรวจสอบสถานะการเชื่อมต่อ
@@ -25,7 +27,9 @@ export class LocalModelService {
   }
   //send command to NodeJS
   generateContent(prompt: string): Observable<any> {
-    return this.http.post('http://localhost:3000/api/generate-content', { query_str: prompt });
+    //return this.http.post('http://localhost:3000/api/generate-content', { query_str: prompt });
+    //edit address
+    return this.http.post('http://54.84.200.3:3000/api/generate-content', { query_str: prompt });
   }
   //Get data Back from NodeJS
   onResponse(callback: (data: any) => void) {
