@@ -1,6 +1,7 @@
 <div>
   <input [(ngModel)]="prompt" placeholder="Enter your prompt">
   <button (click)="sendPrompt()">Send</button>
+  <button (click)="copyToClipboard()">Copy</button>
 </div>
 <div>
   <div class="response-box">

@@ -45,6 +45,22 @@ export class AppComponent implements OnInit {
     this.response = 'Send Prompt'
   }
 
+  copyToClipboard() {
+    const textarea = document.createElement('textarea');
+    textarea.style.position = 'fixed';  // Prevent scrolling to bottom of page in Microsoft Edge.
+    textarea.style.opacity = '0'; // Invisible textarea
+    textarea.textContent = this.response;
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy'); // Copy text to clipboard
+      console.log('Text copied to clipboard');
+    } catch (err) {
+      console.error('Failed to copy text', err);
+    }
+    document.body.removeChild(textarea);
+  }
+
   formatResponse() {
     // แปลง JSON object เป็น string ที่อ่านง่าย
     this.formattedResponse = JSON.stringify(this.response, null, 2);
