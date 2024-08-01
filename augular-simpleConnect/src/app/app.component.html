@@ -1,9 +1,13 @@
 <div>
-  <input [(ngModel)]="prompt" placeholder="Enter your prompt">
+  <h1>Leng's AI</h1>
+  <h1> </h1>
+  <h2>Prompt Input</h2>
+  <textarea class="prompt-input" [(ngModel)]="prompt"></textarea>
   <button (click)="sendPrompt()">Send</button>
   <button (click)="copyToClipboard()">Copy</button>
 </div>
 <div>
+  <h2>Response</h2>
   <div class="response-box">
     <div [innerHTML]="formattedResponseform"></div> <!-- ใช้ [innerHTML] เพื่อแสดงผลข้อความที่จัดรูปแบบแล้ว -->
 </div>

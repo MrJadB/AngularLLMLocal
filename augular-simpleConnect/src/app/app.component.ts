@@ -55,6 +55,7 @@ export class AppComponent implements OnInit {
     try {
       document.execCommand('copy'); // Copy text to clipboard
       console.log('Text copied to clipboard');
+      alert("Text copied to clipboard");
     } catch (err) {
       console.error('Failed to copy text', err);
     }

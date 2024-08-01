@@ -94,3 +94,15 @@ button:hover {
   border-radius: 50px;
   background-color: #ffffff;
 }
+
+.prompt-input {
+  width: 80%;              /* Full width of the container */
+  height: 200px;            /* Adjust the height to make the input area larger */
+  padding: 10px 10px;            /* Padding inside the textarea for better text spacing */
+  margin: 50px 50px;
+  font-size: 14px;          /* Larger font size for readability */
+  border: 1px solid #ccc;   /* Border style */
+  border-radius: 5px;       /* Rounded corners */
+  box-sizing: border-box;   /* Include padding and border in the element’s total width and height */
+  resize: vertical;         /* Allow vertical resizing by the user, if desired */
+}
