@@ -1,0 +1,10 @@
+<div>
+  <input [(ngModel)]="prompt" placeholder="Enter your prompt">
+  <button (click)="sendPrompt()">Send</button>
+</div>
+<div>
+  <h2>Response</h2>
+  <div [innerHTML]="formattedResponseform"></div> <!-- ใช้ [innerHTML] เพื่อแสดงผลข้อความที่จัดรูปแบบแล้ว -->
+</div>
+
+
