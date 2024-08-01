@@ -3,8 +3,9 @@
   <button (click)="sendPrompt()">Send</button>
 </div>
 <div>
-  <h2>Response</h2>
-  <div [innerHTML]="formattedResponseform"></div> <!-- ใช้ [innerHTML] เพื่อแสดงผลข้อความที่จัดรูปแบบแล้ว -->
+  <div class="response-box">
+    <div [innerHTML]="formattedResponseform"></div> <!-- ใช้ [innerHTML] เพื่อแสดงผลข้อความที่จัดรูปแบบแล้ว -->
 </div>
-
+  </div>
+  
 
