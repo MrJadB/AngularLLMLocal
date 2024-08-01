@@ -26,4 +26,6 @@
 11. ทำการรันคำสั่ง npm install --legacy-peer-deps
 12. รันคำสั่ง node server.js
 13. ใช้งาน Leng's_AI ผ่านทางหน้าเวป
+    ![image](https://github.com/user-attachments/assets/3c12143a-6648-4fc1-a347-cdca952de463)
+
 
