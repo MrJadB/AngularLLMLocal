@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   response: string = '';
   formattedResponse: string = ''; // ประกาศตัวแปร formattedResponse
   formattedResponseform: string = '';
+  selectedValue: number = 1;
 
   constructor(private LocalModelService: LocalModelService) {
     this.LocalModelService.onResponse((data: any) => {
@@ -45,6 +46,13 @@ export class AppComponent implements OnInit {
     this.response = 'Send Prompt'
   }
 
+  
+  onSelectionChange() {
+    // Use the selected value directly within the service
+    this.LocalModelService.setSelectedValue(this.selectedValue);
+  }
+
+
   copyToClipboard() {
     const textarea = document.createElement('textarea');
     textarea.style.position = 'fixed';  // Prevent scrolling to bottom of page in Microsoft Edge.
@@ -69,3 +77,7 @@ export class AppComponent implements OnInit {
     this.formattedResponseform = this.formattedResponse.replace(/\\n/g, '<br/>');
 }
 }
+
+
+  
+

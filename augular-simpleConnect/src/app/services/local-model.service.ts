@@ -9,11 +9,12 @@ import { io, Socket } from 'socket.io-client';
 })
 export class LocalModelService {
   private socket: Socket;
+  private selectedValue: number = 1;
 
   constructor(private http: HttpClient) {
-    //this.socket = io('http://localhost:3000', {
+    this.socket = io('http://localhost:3000', {
    //edit address
-    this.socket = io('http://54.84.200.3:3000', {
+    //this.socket = io('http://54.84.200.3:3000', {
       withCredentials: true,
     });
     // ตรวจสอบสถานะการเชื่อมต่อ
@@ -25,11 +26,41 @@ export class LocalModelService {
       console.log('Disconnected from Socket.IO server');
     });
   }
+
+
+  setSelectedValue(value: number) {
+    this.selectedValue = value;
+    console.log('Selected value set in service:', this.selectedValue);
+    // Additional logic to use the selected value
+  }
+
+  getSelectedValue(): number {
+    return this.selectedValue;
+  }
+
   //send command to NodeJS
   generateContent(prompt: string): Observable<any> {
-    //return this.http.post('http://localhost:3000/api/generate-content', { query_str: prompt });
+    if(this.selectedValue == 2){
+      return this.http.post('http://54.84.200.3:3000/api/generate-content', { query_str: `curl -X POST http://3.224.6.184:8091/query -H "Content-Type: application/json" -d '{"query_str": "${prompt}"}' ` });
+    }
+    else{
+      /*return this.http.post('http://localhost:3000/api/generate-content', { query_str:`curl -X POST http://44.223.200.55:7869/api/generate -d '{\ 
+        "model": "gemma2:2b",\ 
+        "prompt": "${prompt}",\
+        "stream": false,\ 
+        "context_length": 1024,\ 
+        "Temperature": 0.2,\ 
+        "stop": [""],\ 
+        "top_p": 0.95,\ 
+        "verbose": false,\ 
+        "repetition_penalty": 1.25,\ 
+        "do_sample": true\ 
+      }' | jq '. | {response, created_at}'` });*/
+      return this.http.post('http://54.84.200.3:3000/api/generate-content',{query_str: `curl -X POST http://44.223.200.55:7869/api/generate -d '{  "model": "llama3.1",  "prompt":"${prompt}" }'" }'`});
+
+    }
     //edit address
-    return this.http.post('http://54.84.200.3:3000/api/generate-content', { query_str: prompt });
+    //return this.http.post('http://54.84.200.3:3000/api/generate-content', { query_str: prompt });
   }
   //Get data Back from NodeJS
   onResponse(callback: (data: any) => void) {

@@ -1,6 +1,14 @@
 <div>
   <h1>Leng's AI</h1>
   <h1> </h1>
+  <!-- prompt-form.component.html -->
+<select [(ngModel)]="selectedValue" (change)="onSelectionChange()">
+  <option value="1">Choice 1</option>
+  <option value="2">Choice 2</option>
+</select>
+
+
+
   <h2>Prompt Input</h2>
   <textarea class="prompt-input" [(ngModel)]="prompt" placeholder="input prompt here"></textarea>
   <button (click)="sendPrompt()">Send Prompt</button>
