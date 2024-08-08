@@ -45,7 +45,7 @@ app.post('/api/generate-content', (req, res) => {
   //const command = prompt;
   //if in json form you have to use ` instead of '
   const command = `curl -X POST http://44.223.200.55:7869/api/generate -d '{
-    "model": "gemma2:2b",
+    "model": "llama3.1",
     "prompt": "${prompt}",
     "stream": false,
     "context_length": 1024,
