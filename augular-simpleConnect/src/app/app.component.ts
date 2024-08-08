@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
   sendPrompt() {
     this.prompt = this.prompt.replace(/null/g, '').trim();
     this.prompt = this.prompt.replace(/\t/g, '|').trim();
+    this.prompt = this.prompt.replace(/\s+/g, '')
     //this.prompt = this.prompt.replace(/[\r\n]+/g+'<br />', ' ').trim();
     const formatprompt = this.convertToNewlineString(this.prompt);
     // Log to verify
