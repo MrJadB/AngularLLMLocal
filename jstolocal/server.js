@@ -42,10 +42,11 @@ app.post('/api/generate-content', (req, res) => {
   io.emit('prompt received!');
 
   //const command = `curl -X POST http://3.224.6.184:8091/query -H "Content-Type: application/json" -d '{"query_str": "${prompt}"}' `;
-  //const command = prompt;
+  const command = prompt;
   //if in json form you have to use ` instead of '
-  const command = `curl -X POST http://44.223.200.55:7869/api/generate -d '{
-    "model": "llama3.1",
+  /*const command = `curl -X POST http://44.223.200.55:7869/api/generate -d '{
+    "model": "gemma2:2b",
+>>>>>>> selectexperimental
     "prompt": "${prompt}",
     "stream": false,
     "context_length": 1024,
@@ -55,7 +56,7 @@ app.post('/api/generate-content', (req, res) => {
     "verbose": false,
     "repetition_penalty": 1.25,
     "do_sample": true
-  }' | jq '. | {response, created_at}'`;
+  }' | jq '. | {response, created_at}'`;*/
   
   io.emit('Executing Command...');
   exec(command, (error, stdout, stderr) => {

@@ -1,10 +1,21 @@
 <div>
   <h1>Leng's AI</h1>
   <h1> </h1>
+  <!-- prompt-form.component.html -->
+<select [(ngModel)]="selectedValue" (change)="onSelectionChange()">
+  <option value="1"> typhoon1.5x8b</option>
+  <option value="2">genma 2:2b</option>
+  <option value="3">llama3.1</option>
+  <option value="4">rajivmehtapy/natural-sql</option>
+</select>
+
+
+<form (ngSubmit)="sendPrompt()">
   <h2>Prompt Input</h2>
-  <textarea class="prompt-input" [(ngModel)]="prompt" placeholder="input prompt here"></textarea>
+  <textarea class="prompt-input" [(ngModel)]="prompt" name="uprompt" placeholder="input prompt here"></textarea>
   <button (click)="sendPrompt()">Send Prompt</button>
   <button (click)="copyToClipboard()">Copy</button>
+</form>
 </div>
 <div>
   <h2>Response</h2>
