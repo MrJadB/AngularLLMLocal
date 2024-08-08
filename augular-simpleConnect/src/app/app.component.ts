@@ -8,7 +8,8 @@ import { LocalModelService } from './services/local-model.service';
 })
 export class AppComponent implements OnInit {
   title = 'mini-bard';
-  prompt: string = '';
+  prompt: string = ``;
+  //formatprompt: string = ``;
   response: string = '';
   formattedResponse: string = ''; // ประกาศตัวแปร formattedResponse
   formattedResponseform: string = '';
@@ -36,8 +37,20 @@ export class AppComponent implements OnInit {
     });
   }
 
+  convertToNewlineString(input: string): string {
+    return input.split('\n').join('\\n');
+  }
+
   sendPrompt() {
-    this.LocalModelService.generateContent(this.prompt).subscribe({
+    this.prompt = this.prompt.replace(/null/g, '').trim();
+    this.prompt = this.prompt.replace(/\t/g, '|').trim();
+    //this.prompt = this.prompt.replace(/[\r\n]+/g+'<br />', ' ').trim();
+    const formatprompt = this.convertToNewlineString(this.prompt);
+    // Log to verify
+    console.log('Original prompt:', this.prompt);
+    console.log('Sanitized prompt:', formatprompt);
+
+    this.LocalModelService.generateContent(formatprompt).subscribe({
       next: (data) => {
         console.log('HTTP Response received:', data); // เพิ่มการแสดงผลในคอนโซล
       },

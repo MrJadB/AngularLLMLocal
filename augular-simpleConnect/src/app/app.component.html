@@ -10,11 +10,12 @@
 </select>
 
 
-
+<form (ngSubmit)="sendPrompt()">
   <h2>Prompt Input</h2>
-  <textarea class="prompt-input" [(ngModel)]="prompt" placeholder="input prompt here"></textarea>
+  <textarea class="prompt-input" [(ngModel)]="prompt" name="uprompt" placeholder="input prompt here"></textarea>
   <button (click)="sendPrompt()">Send Prompt</button>
   <button (click)="copyToClipboard()">Copy</button>
+</form>
 </div>
 <div>
   <h2>Response</h2>
