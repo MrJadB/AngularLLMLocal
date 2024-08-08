@@ -12,9 +12,9 @@ export class LocalModelService {
   private selectedValue: number = 1;
 
   constructor(private http: HttpClient) {
-    this.socket = io('http://localhost:3000', {
+    //this.socket = io('http://localhost:3000', {
    //edit address
-    //this.socket = io('http://54.84.200.3:3000', {
+    this.socket = io('http://54.84.200.3:3000', {
       withCredentials: true,
     });
     // ตรวจสอบสถานะการเชื่อมต่อ
@@ -44,7 +44,7 @@ export class LocalModelService {
       return this.http.post('http://54.84.200.3:3000/api/generate-content', { query_str: `curl -X POST http://3.224.6.184:8091/query -H "Content-Type: application/json" -d '{"query_str": "${prompt}"}' ` });
     }
     else{
-      /*return this.http.post('http://localhost:3000/api/generate-content', { query_str:`curl -X POST http://44.223.200.55:7869/api/generate -d '{\ 
+      return this.http.post('http://54.84.200.3:3000/api/generate-content', { query_str:`curl -X POST http://44.223.200.55:7869/api/generate -d '{\ 
         "model": "gemma2:2b",\ 
         "prompt": "${prompt}",\
         "stream": false,\ 
@@ -55,8 +55,8 @@ export class LocalModelService {
         "verbose": false,\ 
         "repetition_penalty": 1.25,\ 
         "do_sample": true\ 
-      }' | jq '. | {response, created_at}'` });*/
-      return this.http.post('http://54.84.200.3:3000/api/generate-content',{query_str: `curl -X POST http://44.223.200.55:7869/api/generate -d '{  "model": "llama3.1",  "prompt":"${prompt}" }'" }'`});
+      }' | jq '. | {response, created_at}'` });
+      //return this.http.post('http://54.84.200.3:3000/api/generate-content',{query_str: `curl -X POST http://44.223.200.55:7869/api/generate -d '{  "model": "llama3.1",  "prompt":"${prompt}" }'" }'`});
 
     }
     //edit address
