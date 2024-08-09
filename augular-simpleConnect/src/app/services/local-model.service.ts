@@ -40,7 +40,7 @@ export class LocalModelService {
 
   //send command to NodeJS
   generateContent(prompt: string): Observable<any> {
-    if(this.selectedValue == 1){
+    if(this.selectedValue == 3){
       return this.http.post('http://54.84.200.3:3000/api/generate-content', { query_str: `curl -X POST http://3.224.6.184:8091/query -H "Content-Type: application/json" -d '{"query_str": "${prompt}"}' ` });
     }
     else if(this.selectedValue == 2){
@@ -59,7 +59,7 @@ export class LocalModelService {
       //return this.http.post('http://54.84.200.3:3000/api/generate-content',{query_str: `curl -X POST http://44.223.200.55:7869/api/generate -d '{  "model": "llama3.1",  "prompt":"${prompt}" }'" }'`});
 
     }
-    else if(this.selectedValue == 3){
+    else if(this.selectedValue == 1){
       return this.http.post('http://54.84.200.3:3000/api/generate-content', { query_str:`curl -X POST http://44.223.200.55:7869/api/generate \ -d '{ 
         "model": "llama3.1", 
         "prompt": "${prompt}",
