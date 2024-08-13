@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+   frontend:
+    image: jad02/frontend-llmangular
+    ports:
+      - "4200:4200"
+    netwroks:
+     - my-app
+    depends_on:
+      - backend    
+backend:
+    image: jad02/backend-llmangular
+    ports:
+      - "3000:3000"
+    netwroks:
+     - my-app
+networks:
+  my-app:
+  driver: bridge
+
+  
