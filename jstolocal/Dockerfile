@@ -7,6 +7,15 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY /package*.json ./
 
+#Install curl
+RUN apk --no-cache add curl
+
+#install python 
+RUN apk add --no-cache python3 py3-pip \&& ln -sf python3 /usr/bin/python
+
+#Install jq
+RUN apk add --no-cache curl jq bash
+
 # Install dependencies
 RUN npm install --legacy-peer-deps
 
